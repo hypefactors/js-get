@@ -1,0 +1,72 @@
+{
+  "name": "@hypefactors/js-get",
+  "version": "1.0.0",
+  "description": "Retrieve deeply nested properties from mixed objects and arrays using dot notation.",
+  "main": "dist/get.js",
+  "module": "dist/get.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run lint:fix && rollup -c",
+    "test": "jest",
+    "lint": "eslint src test/specs",
+    "lint:fix": "npm run lint -- --fix",
+    "prepublishOnly": "npm run test && build"
+  },
+  "keywords": [
+    "get",
+    "retrieve",
+    "deep",
+    "object",
+    "safe",
+    "nested",
+    "array"
+  ],
+  "license": "ISC",
+  "author": {
+    "name": "Hypefactors",
+    "email": "engineering@hypefactors.com",
+    "url": "https://hypefactors.com"
+  },
+  "contributors": [
+    "Dobromir Hristov <dobri@digital-cult.com> (http://digital-cult.com/)",
+    "Rudolf Halas <halasrudo@gmail.com>"
+  ],
+  "homepage": "https://github.com/hypefactors/js-get#readme",
+  "bugs": {
+    "url": "https://github.com/hypefactors/js-get/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypefactors/js-get.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.3",
+    "regenerator-runtime": "^0.11.1",
+    "rollup": "^0.58.1",
+    "rollup-plugin-babel": "^3.0.3"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  }
+}
