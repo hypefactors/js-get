@@ -8,11 +8,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run lint:fix && rollup -c",
+    "build": "rollup -c",
     "test": "jest",
     "lint": "eslint src test/specs",
-    "lint:fix": "npm run lint -- --fix",
-    "prepublishOnly": "npm run build"
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [
     "get",
