@@ -1,5 +1,5 @@
 # JS-Get
-> A simple and lightweight dot-notiation based property resolver.
+> A simple and lightweight dot-notation based property resolver.
 
 
 [![Build Status](https://travis-ci.org/hypefactors/js-get.svg?branch=master)](https://travis-ci.org/hypefactors/js-get)
