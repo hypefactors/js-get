@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '9'
+- '8'
+
+before_script:
+  - npm run lint
+
+script: npm run test
+
+deploy:
+  provider: npm
+  email: engineering@hypefactors.com
+  api_key:
+    secure: B2ZnWQdY1LKD0FeocHQJWD2hQOX89nw9A/mhzATZoiR+QQ1NYrofNw770NnzyAPK2Y89jmxbME1+ufw2BJfeIoM5IfrL17X+q5gN+/YDUvQsfoRqBfoqyMGEyf6PJz4N6PoUlku8T834smPDunnDOWfvI8tRWIPtxozs5l77cm9J/g4T50KX0dOc7J7tDGa4AnrwDsjv6ReRe/hyHRCRcyuWY9CIep2x6FX2gTTLQQ6Lse1PI4XC87cgLRwbzBTPZkJFaM1JMXSx5WyqQHCYTkBpxKBwNM2p/iubD4ClcD351GmxHVyBhpbheJY4kxIPMr9gZpB2EvHb+44wKujA5/yy7M9gRohLL8ynIB/FaN8OtS1o+IB0JCLrm/uJrARGDpfsybCUoQ8EvmR0Xq/irEnr4Skxf2Wuqbadvn/X5F8H84xQan78m5g2h/4CXjN/l4AfF0JmlacZ9D4jpu6AANb13xR03ZXigQvIOHbj6EZx4sswndf4LeozgQxd0CS8RaZn+Pj3sZ/LtkLnOmf4E2dDcCo6s8AXRzwkD4FVt+zZBmHZcstPJ1gUfzj9mvtXWBlgcNYjYemgmqiU+mXuL4XgJ4jQVGiD+PWbF8EbD4+9kVsCLDHFO+BZTPBTXI+ZUUpzYOmlI5rK7zj8qYy+ttGbNjvmRUY7NXY6ow93D7E=
+  on:
+    tags: true
