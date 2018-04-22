@@ -1,6 +1,6 @@
 {
   "name": "@hypefactors/js-get",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Retrieve deeply nested properties from mixed objects and arrays using dot notation.",
   "main": "dist/get.js",
   "module": "dist/get.esm.js",
