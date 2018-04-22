@@ -1,18 +1,39 @@
 import get from '../../src/get'
 
 describe('Get', () => {
-  describe('Invalid Inputs', () => {
-    it('errors out if provided path is not a String', () => {
+  describe('Debug messages', () => {
+    jest.spyOn(console, 'warn').mockImplementation(() => (true))
+
+    it('shows warning messages in development environment', () => {
+      process.env.NODE_ENV = 'development'
+      jest.resetModules()
+
+      const get = require('../../src/get').default
+
+      get({}, 'foo.bar')
+
+      expect(console.warn).toBeCalled()
+    })
+
+    afterAll(() => {
+      jest.restoreAllMocks()
+      jest.resetModules()
+      process.env.NODE_ENV = 'test'
+    })
+  })
+
+  describe('Invalid inputs', () => {
+    it('uses the fallback value if provided path is not a String or an Array', () => {
       expect(get({}, 1, 'default')).toBe('default')
     })
 
-    it('errors out if provided source is not an Object or Array', () => {
+    it('uses the fallback value if provided source is not an Object or Array', () => {
       expect(get('', 'a.b', 'default')).toBe('default')
       expect(get(2, 'a.b', 'default')).toBe('default')
     })
   })
 
-  describe('Valid Inputs', () => {
+  describe('Valid inputs', () => {
     const profile = {
       age: 15,
       name: {
@@ -21,12 +42,8 @@ describe('Get', () => {
       activities: ['sports', { name: 'fishing', frequency: 'weekly' }]
     }
 
-    it('provides the entry of an array using a property', () => {
+    it('provides the entry of an array', () => {
       expect(get(profile, 'activities.0')).toBe('sports')
-    })
-
-    it('provides the entry of an array using square brackets', () => {
-      expect(get(profile, 'activities[0]')).toBe('sports')
     })
 
     it('provides the property of an object', () => {
@@ -37,8 +54,12 @@ describe('Get', () => {
       expect(get(profile, 'name.first')).toBe('John')
     })
 
-    it('supports paths with mixed array and object access', () => {
-      expect(get(profile, 'activities[1].frequency')).toBe('weekly')
+    it('supports paths with mixed array and object access using dot notation', () => {
+      expect(get(profile, 'activities.1.frequency')).toBe('weekly')
+    })
+
+    it('supports paths with mixed array and object access using array of keys', () => {
+      expect(get(profile, ['activities', '1', 'frequency'])).toBe('weekly')
     })
 
     it('returns an empty string if it cannot resolve the path', () => {

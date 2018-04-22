@@ -1,36 +1,39 @@
-const idDev = process.env.NODE_ENV === 'development'
+const inDebug = ['development', 'local', 'debug'].includes(process.env.NODE_ENV)
 
 function warn (message) {
-  idDev && console.warn(`[@hypefactors/get]: ${message}`)
+  inDebug && console.warn(`[@hypefactors/get]: ${message}`)
 }
 
 /**
  * Deeply fetch dot notated strings from object.
  * Has fallback if value does not exist
- * @param {String} path - Dot notated string
+ * @param {String|Array} path - Dot notated string or an array of keys
  * @param {Object} source - Object to traverse
  * @param {*} fallback - Fallback value
  * @return {*}
  */
 export default function get (source, path, fallback = '') {
-  if (typeof path !== 'string') {
-    warn(`Expected a string in the first argument, got ${typeof path}`)
-
-    return fallback
-  }
-
   if (typeof source !== 'object') {
     warn(`Expected an Object/Array in the second argument, got ${typeof source}`)
+
     return fallback
   }
 
   try {
-    return path.trim().replace(/\[(\d+)]/g, '.$1').split('.').reduce((obj, current) => {
-      if (!obj[current]) throw new Error(`The "${path}" could not be resolved in ${JSON.stringify(obj)} at key "${current}"`)
-      return obj[current]
-    }, source)
-  } catch (err) {
-    warn(err)
+    const keys = Array.isArray(path) ? path : path.split('.')
+
+    for (let i = 0; i < keys.length; i++) {
+      let key = keys[i]
+
+      if (!source || !source.hasOwnProperty(key)) {
+        warn(`The "${path}" could not be resolved at key "${key}"`)
+        return fallback
+      }
+      source = source[key]
+    }
+
+    return source
+  } catch (_) {
     return fallback
   }
 }

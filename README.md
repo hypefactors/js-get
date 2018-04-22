@@ -15,6 +15,7 @@
 
 ## Why JS-Get
 
+- Fast
 - Lightweight, well-documented source code bundled as CJS, EM and UMD
 - 100% test coverage
 - Supports objects and arrays
@@ -53,10 +54,18 @@ The properties can be accessed using dot notation:
 ```javascript
 get(profile, 'age') // 15
 get(profile, 'name.first') // 'John'
-get(profile, 'activities[0]') // 'sports'
 get(profile, 'activities.0') // 'sports'
-get(profile, 'activities[1].frequency') // 'weekly'
+get(profile, 'activities.1.frequency') // 'weekly'
 get(profile, 'foobar', 'not-found') // 'not-found'
+```
+
+Or using array syntax:
+```javascript
+get(profile, ['age']) // 15
+get(profile, ['name', 'first']) // 'John'
+get(profile, ['activities', '0']) // 'sports'
+get(profile, ['activities', '1', 'frequency']) // 'weekly'
+get(profile, ['foobar'], 'not-found') // 'not-found'
 ```
 
 ## Contributing
