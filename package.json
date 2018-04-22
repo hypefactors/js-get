@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "jest",
+    "test": "jest --coverage",
+    "benchmark": "npm run build && node test/benchmarks/get.b.js",
     "lint": "eslint src test/specs",
     "lint:fix": "npm run lint -- --fix",
     "release": "standard-version"
@@ -46,6 +47,7 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
+    "benchmark": "^2.1.4",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^4.0.1",
