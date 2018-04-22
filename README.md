@@ -1,10 +1,9 @@
 # JS-Get
 > A simple and lightweight dot-notation based property resolver.
 
-
 [![Build Status](https://travis-ci.org/hypefactors/js-get.svg?branch=master)](https://travis-ci.org/hypefactors/js-get)
 [![GitHub release](https://img.shields.io/github/release/hypefactors/js-get.svg)](https://github.com/hypefactors/js-get)
-[![npm](https://img.shields.io/npm/dt/js-get.svg)](https://www.npmjs.com/package/js-get)
+[![npm](https://img.shields.io/npm/dt/@hypefactors/js-get.svg)](https://www.npmjs.com/package/@hypefactors/js-get)
 
 
 ## Contents
